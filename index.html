@@ -1,69 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rock Paper Scissor</title>
-  <script>
-    function getComputerChoice(){
-      const choices = ["rock", "paper", "scissor"];
-      return choices[Math.floor(Math.random() * choices.length)]
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Rock Paper Scissor</title>
+    <body class="w-screen min-h-screen bg-indigo-900 text-white">
+      <div class="max-w-3xl mx-auto">
+        <h1 class="text-center text-3xl py-10">Rock Paper Scissors</h1>
+        <div class="pb-16 flex justify-between">
+          <p class="text-xl">User Score : <span id="score">0</span></p>
+          <p class="text-xl">Total Rounds : <span id="rounds">0</span></p>
+        </div>
+        <div class="flex justify-between items-center gap-8 pb-16">
+          <p class="text-2xl">Enter your choice:</p>
 
-    function getUserChoice(){
-      var choice = prompt(`Enter your choice:[Rock, Paper or Scissor]`).toLowerCase();
-      if(choice == 'rock' || choice == 'paper' || choice == 'scissor'){
-        return choice;
-      }else{
-        return getUserChoice();
-      }
-    }
-    
-    function playRound(userSelection, computerSelection){
-      if(userSelection === computerSelection){
-        return `ITS A DRAW, both chose ${userSelection}`;
-      }
-      else if(userSelection === 'rock'){
-        if(computerSelection === 'paper'){
-          return "YOU LOSE, paper beats rock";
-        }
-        if(computerSelection === 'scissor'){
-          return "YOU WIN, rock beats scissor";
-        }
-      }
+          <button
+            class="py-4 px-10 bg-slate-800 text-2xl rounded-xl hover:bg-slate-700 transition"
+            onclick="playGame('rock')"
+          >
+            Rock
+          </button>
+          <button
+            class="py-4 px-10 bg-slate-800 text-2xl rounded-xl hover:bg-slate-700 transition"
+            onclick="playGame('paper')"
+          >
+            Paper
+          </button>
+          <button
+            class="py-4 px-10 bg-slate-800 text-2xl rounded-xl hover:bg-slate-700 transition"
+            onclick="playGame('scissor')"
+          >
+            Scissors
+          </button>
+        </div>
 
-      else if(userSelection === 'paper'){
-        if(computerSelection === 'rock'){
-          return "YOU WIN, paper beats rock";
-        }
-        if(computerSelection === 'scissor'){
-          return "YOU LOSE, scissor beats rock";
-        }
-      }
+        <div class="flex items-center gap-16 pb-16">
+          <p class="text-2xl">Computer's choice:</p>
+          <span id="computers-choice" class="text-2xl"></span>
+        </div>
 
-      else if(userSelection === 'scissor'){
-        if(computerSelection === 'rock'){
-          return "YOU LOSE, rock beats scissor";
-        }
-        if(computerSelection === 'paper'){
-          return "YOU WIN, scissor beats paper";
-        }
-      }
-    }
-
-    function game(){
-      const nRounds = prompt("Enter the number of rounds to play");
-      for(let i=0; i<nRounds; i++){
-        const userSelection = getUserChoice();
-        const computerSelection = getComputerChoice();
-        alert(playRound(userSelection, computerSelection))
-      }
-    }
-
-    game();
-  </script>
-</head>
-<body>
-</body>
+        <p class="text-2xl text-center transition-all" id="result"></p>
+      </div>
+    </body>
+    <script src="./script.js"></script>
+  </head>
+  <body></body>
 </html>
